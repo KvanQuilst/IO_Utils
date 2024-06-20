@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 --                                                                           --
---                                Adansi IO                                  --
+--                                IO Utils                                   --
 --                                                                           --
---                            Adansi_IO (Body)                               --
+--                         IO_Utils . Ansi (Body)                            --
 --                                                                           --
 --                      Copyright (C) 2024 Dylan Eskew                       --
 --                                                                           --
@@ -26,7 +26,7 @@ with Ada.Characters.Latin_1; use Ada.Characters.Latin_1;
 with Ada.Integer_Text_IO;
 with Ada.Text_IO; use Ada.Text_IO;
 
-package body Adansi_IO is
+package body IO_Utils.Ansi is
    -- Set default Integer width to 0 --
    procedure Put (Item  : Integer;
                   Width : Field := 0;
@@ -300,4 +300,4 @@ package body Adansi_IO is
       Put (ESC & "8");
    end Cursor_Restore_Position;
 
-end Adansi_IO;
+end IO_Utils.Ansi;

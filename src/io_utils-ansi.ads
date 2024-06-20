@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 --                                                                           --
---                                Adansi IO                                  --
+--                                IO Utils                                   --
 --                                                                           --
---                            Adansi_IO (Body)                               --
+--                         IO_Utils . Ansi (Spec)                            --
 --                                                                           --
 --                      Copyright (C) 2024 Dylan Eskew                       --
 --                                                                           --
@@ -22,7 +22,7 @@
 -- You should have received a copy of the GNU General Public License along   --
 -- with Adansi_IO. If not, see <https://www.gnu.org/licenses/>.              --
 -------------------------------------------------------------------------------
-package Adansi_IO is
+package IO_Utils.Ansi is
 
    type Color is (Black, Red, Green, Yellow,
                   Blue, Magenta, Cyan, White, Default,
@@ -134,4 +134,4 @@ private
 
    procedure Set_RGB (C : Color_RGB) with Inline;
 
-end Adansi_IO;
+end IO_Utils.Ansi;
