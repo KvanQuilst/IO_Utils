@@ -1,6 +1,7 @@
 name = "io_utils"
 description = "A terminal IO library"
 version = "0.1.0-dev"
+licenses = "GPL-3.0-only"
 
 authors = ["Dylan E."]
 maintainers = ["Dylan E. <76961140+KvanQuilst@users.noreply.github.com>"]
