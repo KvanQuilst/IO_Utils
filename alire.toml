@@ -1,5 +1,5 @@
 name = "io_utils"
-description = "Shiny new project"
+description = "A terminal IO library"
 version = "0.1.0-dev"
 
 authors = ["Dylan E."]
