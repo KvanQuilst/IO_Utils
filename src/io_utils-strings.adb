@@ -31,7 +31,7 @@ package body IO_Utils.Strings is
 
    function Set_Fg (Str : String;
                     Fg  : Color) return String is
-      Val : constant String := Color'Enum_Rep (Fg)'Image (1 .. 2);
+      Val : constant String := Color'Enum_Rep (Fg)'Image (2 .. 3);
    begin
       return Set (Str, Val);
    end Set_Fg;
@@ -42,7 +42,7 @@ package body IO_Utils.Strings is
                                     when 0 .. 9     => 1,
                                     when 10 .. 99   => 2,
                                     when 100 .. 255 => 3);
-      Val  : constant String   := Fg'Image (1 .. Size);
+      Val  : constant String   := Fg'Image (2 .. Size);
    begin
       return Set (Str, "38;5;" & Val);
    end Set_Fg;
@@ -61,9 +61,9 @@ package body IO_Utils.Strings is
                                        when 0 .. 9     => 1,
                                        when 10 .. 99   => 2,
                                        when 100 .. 255 => 3);
-      Val_R  : constant String   := Fg.Red'Image   (1 .. Size_R);
-      Val_G  : constant String   := Fg.Green'Image (1 .. Size_G);
-      Val_B  : constant String   := Fg.Blue'Image  (1 .. Size_B);
+      Val_R  : constant String   := Fg.Red'Image   (2 .. Size_R);
+      Val_G  : constant String   := Fg.Green'Image (2 .. Size_G);
+      Val_B  : constant String   := Fg.Blue'Image  (2 .. Size_B);
    begin
       return Set (Str, "38;2;" & Val_R & ";" & Val_G & ";" & Val_B);
    end Set_Fg;
@@ -71,7 +71,7 @@ package body IO_Utils.Strings is
    function Set_Bg (Str : String;
                     Bg  : Color) return String is
       Bg_Val : constant Integer := Color'Enum_Rep (Bg) + 10;
-      Val    : constant String  := Bg_Val'Image (1 .. 2);
+      Val    : constant String  := Bg_Val'Image (2 .. 3);
    begin
       return Set (Str, Val);
    end Set_Bg;
@@ -82,7 +82,7 @@ package body IO_Utils.Strings is
                                     when 0 .. 9     => 1,
                                     when 10 .. 99   => 2,
                                     when 100 .. 255 => 3);
-      Val  : constant String   := Bg'Image (1 .. Size);
+      Val  : constant String   := Bg'Image (2 .. Size);
    begin
       return Set (Str, "48;5;" & Val);
    end Set_Bg;
@@ -101,9 +101,9 @@ package body IO_Utils.Strings is
                                        when 0 .. 9     => 1,
                                        when 10 .. 99   => 2,
                                        when 100 .. 255 => 3);
-      Val_R  : constant String   := Bg.Red'Image   (1 .. Size_R);
-      Val_G  : constant String   := Bg.Green'Image (1 .. Size_G);
-      Val_B  : constant String   := Bg.Blue'Image  (1 .. Size_B);
+      Val_R  : constant String   := Bg.Red'Image   (2 .. Size_R);
+      Val_G  : constant String   := Bg.Green'Image (2 .. Size_G);
+      Val_B  : constant String   := Bg.Blue'Image  (2 .. Size_B);
    begin
       return Set (Str, "48;2;" & Val_R & ";" & Val_G & ";" & Val_B);
    end Set_Bg;
@@ -112,8 +112,8 @@ package body IO_Utils.Strings is
                        Fg  : Color;
                        Bg  : Color) return String is
       Bg_Val : constant Integer := Color'Enum_Rep (Bg) + 10;
-      Val_Fg : constant String  := Color'Enum_Rep (Fg)'Image (1 .. 2);
-      Val_Bg : constant String  := Bg_Val'Image (1 .. 2);
+      Val_Fg : constant String  := Color'Enum_Rep (Fg)'Image (2 .. 3);
+      Val_Bg : constant String  := Bg_Val'Image (2 .. 3);
    begin
       return Set (Str, Val_Fg & ";" & Val_Bg);
    end Set_Color;
@@ -129,8 +129,8 @@ package body IO_Utils.Strings is
                                        when 0 .. 9     => 1,
                                        when 10 .. 99   => 2,
                                        when 100 .. 255 => 3);
-      Val_Fg : constant String    := Fg'Image (1 .. Size_Fg);
-      Val_Bg : constant String    := Bg'Image (1 .. Size_Bg);
+      Val_Fg : constant String    := Fg'Image (2 .. Size_Fg);
+      Val_Bg : constant String    := Bg'Image (2 .. Size_Bg);
    begin
       return Set (Str, "38;5;" & Val_Fg & ";48;5;" & Val_Bg);
    end Set_Color;
@@ -162,12 +162,12 @@ package body IO_Utils.Strings is
                                           when 0 .. 9     => 1,
                                           when 10 .. 99   => 2,
                                           when 100 .. 255 => 3);
-      Val_Fg_R  : constant String   := Fg.Red'Image   (1 .. Size_Fg_R);
-      Val_Fg_G  : constant String   := Fg.Green'Image (1 .. Size_Fg_G);
-      Val_Fg_B  : constant String   := Fg.Blue'Image  (1 .. Size_Fg_B);
-      Val_Bg_R  : constant String   := Bg.Red'Image   (1 .. Size_Bg_R);
-      Val_Bg_G  : constant String   := Bg.Green'Image (1 .. Size_Bg_G);
-      Val_Bg_B  : constant String   := Bg.Blue'Image  (1 .. Size_Bg_B);
+      Val_Fg_R  : constant String   := Fg.Red'Image   (2 .. Size_Fg_R);
+      Val_Fg_G  : constant String   := Fg.Green'Image (2 .. Size_Fg_G);
+      Val_Fg_B  : constant String   := Fg.Blue'Image  (2 .. Size_Fg_B);
+      Val_Bg_R  : constant String   := Bg.Red'Image   (2 .. Size_Bg_R);
+      Val_Bg_G  : constant String   := Bg.Green'Image (2 .. Size_Bg_G);
+      Val_Bg_B  : constant String   := Bg.Blue'Image  (2 .. Size_Bg_B);
    begin
       return Set (Str,
                   "38;2;" & Val_Fg_R & ";" & Val_Fg_G & ";" & Val_Fg_B & ";"
