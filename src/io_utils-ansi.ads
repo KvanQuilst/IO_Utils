@@ -75,18 +75,18 @@ package IO_Utils.Ansi is
    -- Coloring --
    --------------
 
-   procedure Set_Fg    (Fg : Color) with Inline;
+   procedure Set_Fg    (Fg : Color)   with Inline;
    procedure Set_Fg    (Fg : Color_8) with Inline;
    procedure Set_Fg    (Fg : Color_RGB);
 
    procedure Set_Bg    (Bg : Color_8) with Inline;
-   procedure Set_Bg    (Bg : Color) with Inline;
+   procedure Set_Bg    (Bg : Color)   with Inline;
    procedure Set_Bg    (Bg : Color_RGB);
 
    procedure Set_Color (Fg : Color_8;
                         Bg : Color_8) with Inline;
    procedure Set_Color (Fg : Color;
-                        Bg : Color) with Inline;
+                        Bg : Color)   with Inline;
    procedure Set_Color (Fg : Color_RGB;
                         Bg : Color_RGB);
 
