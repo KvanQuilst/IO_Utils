@@ -247,8 +247,8 @@ package body IO_Utils.Ansi is
       Put (CSI & "H");
    end Cursor_Home;
 
-   procedure Cursor_Set (Line   : Positive;
-                         Col : Natural) is
+   procedure Cursor_Set (Line : Positive;
+                         Col  : Natural) is
    begin
       Put (CSI);
       Put (Line);
@@ -266,6 +266,10 @@ package body IO_Utils.Ansi is
 
    procedure Cursor_Line_Move (Num_Lines : Integer) is
    begin
+      if Num_Lines = 0 then
+         return;
+      end if;
+
       Put (CSI);
       Put ((if Num_Lines < 0
             then 0 - Num_Lines
@@ -277,6 +281,10 @@ package body IO_Utils.Ansi is
 
    procedure Cursor_Col_Move (Num_Cols : Integer) is
    begin
+      if Num_Cols = 0 then
+         return;
+      end if;
+
       Put (CSI);
       Put ((if Num_Cols < 0
             then 0 - Num_Cols
