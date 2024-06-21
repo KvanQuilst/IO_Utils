@@ -71,6 +71,13 @@ package IO_Utils.Ansi is
    type Style_Set is array (Style'Range) of Boolean
       with Default_Component_Value => False;
 
+   ------------------
+   -- Escape Codes --
+   ------------------
+
+   ESC : constant Character := Character'Val (27);
+   CSI : constant String    := ESC & "[";
+
    --------------
    -- Coloring --
    --------------
@@ -94,11 +101,12 @@ package IO_Utils.Ansi is
    -- Styling --
    -------------
 
-   procedure Set_Style    (S        : Style) with Inline;
-   procedure Unset_Style  (S        : Style);
-   procedure Unset_Styles (Styles   : Style_Set);
-   procedure Set_Styles   (Styles   : Style_Set;
-                           Override : Boolean := False);
+   procedure Set_Style (S        : Style) with Inline;
+   procedure Set_Style (Styles   : Style_Set;
+                        Override : Boolean := False);
+
+   procedure Unset_Style (S        : Style);
+   procedure Unset_Style (Styles   : Style_Set);
 
    procedure Reset_All with Inline;
 
