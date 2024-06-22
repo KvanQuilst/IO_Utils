@@ -138,7 +138,7 @@ package body IO_Utils.User_IO is
          if Opt_Set (Opt)
          then
             Total := Total + 1;
-            Opts (Total) := To_Opt (Opt - 1);
+            Opts (Total) := To_Opt (Opt);
          end if;
       end loop;
 
