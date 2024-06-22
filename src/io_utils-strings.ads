@@ -30,27 +30,34 @@ package IO_Utils.Strings is
    --------------
 
    function Set_Fg    (Str : String;
-                       Fg  : Color)     return String;
+                       Fg  : Color)      return String;
    function Set_Fg    (Str : String;
-                       Fg  : Color_8)   return String;
+                       Fg  : Color_8)    return String;
    function Set_Fg    (Str : String;
-                       Fg  : Color_RGB) return String;
+                       Fg  : Color_RGB)  return String;
+   function Set_Fg    (Str : String;
+                       Fg  : Color_Elem) return String;
 
    function Set_Bg    (Str : String;
-                       Bg  : Color_8)   return String;
+                       Bg  : Color_8)    return String;
    function Set_Bg    (Str : String;
-                       Bg  : Color)     return String;
+                       Bg  : Color)      return String;
    function Set_Bg    (Str : String;
-                       Bg  : Color_RGB) return String;
+                       Bg  : Color_RGB)  return String;
+   function Set_Bg    (Str : String;
+                       Bg  : Color_Elem)  return String;
 
    function Set_Color (Str : String;
                        Fg  : Color_8;
-                       Bg  : Color_8)   return String;
+                       Bg  : Color_8)    return String;
    function Set_Color (Str : String;
                        Fg  : Color;
-                       Bg  : Color)     return String;
+                       Bg  : Color)      return String;
    function Set_Color (Str : String;
                        Fg  : Color_RGB;
-                       Bg  : Color_RGB) return String;
+                       Bg  : Color_RGB)  return String;
+   function Set_Color (Str : String;
+                       Fg  : Color_Elem;
+                       Bg  : Color_Elem) return String;
 
 end IO_Utils.Strings;

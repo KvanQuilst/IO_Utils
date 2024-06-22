@@ -87,9 +87,9 @@ package body IO_Utils.Ansi is
    procedure Set_Bg (Bg : Color_Elem) is
    begin
       case Bg.T is
-         when Color_T     => Set_Fg (Bg.C);
-         when Color_8_T   => Set_Fg (Bg.C8);
-         when Color_RGB_T => Set_Fg (Bg.CRGB);
+         when Color_T     => Set_Bg (Bg.C);
+         when Color_8_T   => Set_Bg (Bg.C8);
+         when Color_RGB_T => Set_Bg (Bg.CRGB);
       end case;
    end Set_Bg;
 

@@ -68,6 +68,13 @@ package body IO_Utils.Strings is
       return Set (Str, "38;2;" & Val_R & ";" & Val_G & ";" & Val_B);
    end Set_Fg;
 
+   function Set_Fg (Str : String;
+                    Fg  : Color_Elem) return String is
+      (case Fg.T is
+         when Color_T     => Set_Fg (Str, Fg.C),
+         when Color_8_T   => Set_Fg (Str, Fg.C8),
+         when Color_RGB_T => Set_Fg (Str, Fg.CRGB));
+
    function Set_Bg (Str : String;
                     Bg  : Color) return String is
       Bg_Val : constant Integer := Color'Enum_Rep (Bg) + 10;
@@ -86,6 +93,13 @@ package body IO_Utils.Strings is
    begin
       return Set (Str, "48;5;" & Val);
    end Set_Bg;
+
+   function Set_Bg (Str : String;
+                    Bg  : Color_Elem) return String is
+      (case Bg.T is
+         when Color_T     => Set_Bg (Str, Bg.C),
+         when Color_8_T   => Set_Bg (Str, Bg.C8),
+         when Color_RGB_T => Set_Bg (Str, Bg.CRGB));
 
    function Set_Bg (Str : String;
                     Bg  : Color_RGB) return String is
@@ -173,5 +187,10 @@ package body IO_Utils.Strings is
                   "38;2;" & Val_Fg_R & ";" & Val_Fg_G & ";" & Val_Fg_B & ";"
                 & "48;2;" & Val_Bg_R & ";" & Val_Bg_G & ";" & Val_Bg_B);
    end Set_Color;
+
+   function Set_Color (Str : String;
+                       Fg  : Color_Elem;
+                       Bg  : Color_Elem) return String is
+      (Set_Fg (Set_Bg (Str, Bg), Fg));
 
 end IO_Utils.Strings;
