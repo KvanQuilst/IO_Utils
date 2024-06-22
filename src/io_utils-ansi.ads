@@ -56,6 +56,18 @@ package IO_Utils.Ansi is
       Blue  : Color_8;
    end record;
 
+   type Color_Type is (Color_T, Color_8_T, Color_RGB_T);
+   type Color_Elem (T : Color_Type := Color_T) is record
+      case T is
+         when Color_T =>
+            C    : Color;
+         when Color_8_T =>
+            C8   : Color_8;
+         when Color_RGB_T =>
+            CRGB : Color_RGB;
+      end case;
+   end record;
+
    type Style is (Bold, Dim, Italic, Underline,
                   Blinking, Inverse, Hidden, Strikethrough);
    for Style use (
@@ -85,10 +97,12 @@ package IO_Utils.Ansi is
    procedure Set_Fg    (Fg : Color)   with Inline;
    procedure Set_Fg    (Fg : Color_8) with Inline;
    procedure Set_Fg    (Fg : Color_RGB);
+   procedure Set_Fg    (Fg : Color_Elem);
 
    procedure Set_Bg    (Bg : Color_8) with Inline;
    procedure Set_Bg    (Bg : Color)   with Inline;
    procedure Set_Bg    (Bg : Color_RGB);
+   procedure Set_Bg    (Bg : Color_Elem);
 
    procedure Set_Color (Fg : Color_8;
                         Bg : Color_8) with Inline;
@@ -96,6 +110,8 @@ package IO_Utils.Ansi is
                         Bg : Color)   with Inline;
    procedure Set_Color (Fg : Color_RGB;
                         Bg : Color_RGB);
+   procedure Set_Color (Fg : Color_Elem;
+                        Bg : Color_Elem);
 
    -------------
    -- Styling --

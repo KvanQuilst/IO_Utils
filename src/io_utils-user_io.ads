@@ -28,11 +28,9 @@ with IO_Utils.Ansi; use IO_Utils.Ansi;
 
 package IO_Utils.User_IO is
 
-   Default_Width : Positive := 40;
-
    type Bool_Arr  is array (Positive range <>) of Boolean;
    type Char_Arr  is array (Positive range <>) of Character;
-   type Color_Arr is array (Positive range <>) of Color;
+   type Color_Arr is array (Positive range <>) of Color_Elem;
    type Int_Arr   is array (Positive range <>) of Integer;
    type Str_Arr   is array (Positive range <>) of Unbounded_String;
 
@@ -42,8 +40,8 @@ package IO_Utils.User_IO is
    -- Ask before calling --
    ------------------------
 
-   Default_Option_Prompt    : String := "Select from these options:";
-   Default_Unselected_Color : Color  := Default;
+   Default_Option_Prompt    : String      := "Select from these options:";
+   Default_Unselected_Color : Color_Elem  := (Color_T, Default);
 
    function Get_Option (Options : Str_Arr) return Character
       with Pre => Options'Length > 0;
@@ -61,6 +59,7 @@ package IO_Utils.User_IO is
    -- Interface Elements --
    ------------------------
 
+   Default_Width : Positive := 40;
    Default_Separator    : Character := '-';
 
    procedure Continue;

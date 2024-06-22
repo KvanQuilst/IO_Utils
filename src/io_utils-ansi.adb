@@ -54,6 +54,15 @@ package body IO_Utils.Ansi is
       Put ("m");
    end Set_Fg;
 
+   procedure Set_Fg (Fg : Color_Elem) is
+   begin
+      case Fg.T is
+         when Color_T     => Set_Fg (Fg.C);
+         when Color_8_T   => Set_Fg (Fg.C8);
+         when Color_RGB_T => Set_Fg (Fg.CRGB);
+      end case;
+   end Set_Fg;
+
    procedure Set_Bg (Bg : Color_8) is
    begin
       Put (CSI & "48;5;");
@@ -73,6 +82,15 @@ package body IO_Utils.Ansi is
       Put (CSI & "48;2;");
       Set_RGB (Bg);
       Put ("m");
+   end Set_Bg;
+
+   procedure Set_Bg (Bg : Color_Elem) is
+   begin
+      case Bg.T is
+         when Color_T     => Set_Fg (Bg.C);
+         when Color_8_T   => Set_Fg (Bg.C8);
+         when Color_RGB_T => Set_Fg (Bg.CRGB);
+      end case;
    end Set_Bg;
 
    procedure Set_Color (Fg : Color;
@@ -103,6 +121,13 @@ package body IO_Utils.Ansi is
       Put (";48;2;");
       Set_RGB (Bg);
       Put ("m");
+   end Set_Color;
+
+   procedure Set_Color (Fg : Color_Elem;
+                        Bg : Color_Elem) is
+   begin
+      Set_Fg (Fg);
+      Set_Bg (Bg);
    end Set_Color;
 
    -- Assumes '^[' set before call and 'm' after call --

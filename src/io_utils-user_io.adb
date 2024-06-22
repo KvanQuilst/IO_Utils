@@ -34,7 +34,8 @@ package body IO_Utils.User_IO is
       (Character'Val (96 + Length));
 
    function Get_Option (Options : Str_Arr) return Character is
-      Colors : constant Color_Arr (Options'Range) := (others => Default);
+      Colors : constant Color_Arr (Options'Range) :=
+         (others => (Color_T, Default));
    begin
       return Get_Option (Options, Colors);
    end Get_Option;
@@ -85,7 +86,8 @@ package body IO_Utils.User_IO is
    end Get_Option;
 
    function Get_Options (Options : Str_Arr) return Char_Arr is
-      Colors : constant Color_Arr (Options'Range) := (others => Default);
+      Colors : constant Color_Arr (Options'Range) :=
+         (others => (Color_T, Default));
    begin
       return Get_Options (Options, Colors);
    end Get_Options;
