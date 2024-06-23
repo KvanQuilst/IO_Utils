@@ -1,0 +1,15 @@
+name = "tests"
+description = "Testing suite for IO_Utils"
+version = "1.0.0"
+
+authors = ["Dylan E."]
+maintainers = ["Dylan E. <76961140+KvanQuilst@users.noreply.github.com>"]
+maintainers-logins = ["kvanquilst"]
+
+executables = ["tests"]
+[[depends-on]]
+aunit = "^24.0.0"
+io_utils = "*"
+
+[[pins]]
+io_utils = { path = ".."}
