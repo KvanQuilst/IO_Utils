@@ -145,6 +145,66 @@ package body IO_Utils.User_IO is
       return Opts (1 .. Total);
    end Get_Options;
 
+   function Get_Integer (Low, High : Integer) return Integer is
+      C    : Character;
+      Val  : Integer := 0;
+      Size : Natural := 0;
+      Neg  : Boolean := False;
+   begin
+      Put ("Response: ");
+      loop
+         Get_Immediate (C);
+         exit when Size > 0 and then
+                   Character'Pos (C) = 10;
+
+         case C is
+            -- Backspace --
+            when Character'Val (8) =>
+               if Size > 0
+               then
+                  Val := Val / 10;
+                  Size := Size - 1;
+                  Cursor_Col_Move (0 - 1);
+                  Erase_Line_To_End;
+               elsif Neg
+               then
+                  Neg := False;
+                  Cursor_Col_Move (0 - 1);
+                  Erase_Line_To_End;
+               end if;
+
+            -- Set Negative --
+            when '-' =>
+               if Low < 0 and then Size = 0
+               then
+                  Neg := True;
+                  Put (C);
+               end if;
+
+            -- Digits --
+            when '0' .. '9' =>
+               declare
+                  Dig : constant Integer :=
+                     Character'Pos (C) - Character'Pos ('0');
+                  Tmp : constant Integer := (if Neg
+                                                then Val * 10 - Dig
+                                                else Val * 10 + Dig);
+               begin
+                  if Tmp >= Low and then Tmp <= High
+                  then
+                     Put (C);
+                  end if;
+               end;
+
+            -- Invalid Character --
+            when others =>
+               null;
+         end case;
+      end loop;
+
+      return Val;
+   end Get_Integer;
+
    -----------------------
    -- Inteface Elements --
    -----------------------

@@ -55,6 +55,8 @@ package IO_Utils.User_IO is
                          Colors  : Color_Arr)  return Char_Arr
       with Pre => Options'Length > 0 and then Options'Length = Colors'Length;
 
+   function Get_Integer (Low, High : Integer) return Integer;
+
    ------------------------
    -- Interface Elements --
    ------------------------
