@@ -108,7 +108,7 @@ package body IO_Utils.Ansi is
    begin
       Put (CSI & "38;5;");
       Put (Fg);
-      Put ("48;5;");
+      Put (";48;5;");
       Put (Bg);
       Put ("m");
    end Set_Color;
