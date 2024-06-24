@@ -1,0 +1,20 @@
+name = "io_utils"
+description = "A terminal IO library"
+version = "1.0.0"
+licenses = "GPL-3.0-only"
+
+authors = ["Dylan E."]
+maintainers = ["Dylan E. <76961140+KvanQuilst@users.noreply.github.com>"]
+maintainers-logins = ["kvanquilst"]
+
+project-files = ["io_utils.gpr"]
+
+[available.'case(os)']
+linux   = true
+macos   = false
+windows = false
+'...'   = false
+
+[origin]
+commit = "abf8c601458c19efac55d34f6a125c2a5e4a7bd2"
+url = "git+https://github.com/KvanQuilst/IO_Utils.git"
