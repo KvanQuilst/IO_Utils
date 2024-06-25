@@ -42,7 +42,6 @@ package body Test.Ansi is
       New_Line;
 
       Put_Line (" Control:");
-      New_Line;
       Put_Line ("  " & CSI & "30m██"
                      & CSI & "31m██"
                      & CSI & "32m██"
@@ -80,21 +79,21 @@ package body Test.Ansi is
       Put_Line ("-- Set_Fg_8_Test --");
       New_Line;
 
-      for I in 0 .. 8 loop
+      for I in 0 .. 7 loop
          Put_Line (" Control:");
          Put ("  ");
          for J in 0 .. 31 loop
             Put (CSI & "38;5;");
-            Put (I * 8 + J);
+            Put (I * 32 + J);
             Put ("m██");
          end loop;
-         Reset_All;
+         Put (CSI & "0m");
          New_Line;
 
          Put_Line (" Set_Fg:");
          Put ("  ");
          for J in 0 .. 31 loop
-            Set_Fg (I * 8 + J);
+            Set_Fg (I * 32 + J);
             Put ("██");
          end loop;
          Reset_All;
@@ -105,15 +104,21 @@ package body Test.Ansi is
    end Set_Fg_8_Test;
 
    procedure Set_Fg_RGB_Test is
-      C : Color_RGB := (245, 145, 45);
+      C : constant Color_RGB := (245, 145, 45);
    begin
       New_Line;
       Put_Line ("-- Set_Fg_RGB_Test --");
       New_Line;
 
       Put_Line (" Control:");
-      Put_Line ("  " & CSI & "38;2;245;145;45m██");
-      Reset_All;
+      Put ("  " & CSI & "38;2;");
+      Put (C.Red);
+      Put (";");
+      Put (C.Green);
+      Put (";");
+      Put (C.Blue);
+      Put ("m██" & CSI & "0m");
+      New_Line;
 
       Put_Line (" Set_Fg:");
       Set_Fg (C);
@@ -167,21 +172,21 @@ package body Test.Ansi is
       Put_Line ("-- Set_Bg_8_Test --");
       New_Line;
 
-      for I in 0 .. 8 loop
+      for I in 0 .. 7 loop
          Put_Line (" Control:");
          Put ("  ");
          for J in 0 .. 31 loop
             Put (CSI & "48;5;");
-            Put (I * 8 + J);
+            Put (I * 32 + J);
             Put ("m  ");
          end loop;
-         Reset_All;
+         Put (CSI & "0m");
          New_Line;
 
          Put_Line (" Set_Bg:");
          Put ("  ");
          for J in 0 .. 31 loop
-            Set_Bg (I * 8 + J);
+            Set_Bg (I * 32 + J);
             Put ("  ");
          end loop;
          Reset_All;
@@ -199,7 +204,14 @@ package body Test.Ansi is
       New_Line;
 
       Put_Line (" Control:");
-      Put_Line ("  " & CSI & "48;2;245;145;45m  " & CSI & "0m");
+      Put ("  " & CSI & "48;2;");
+      Put (C.Red);
+      Put (";");
+      Put (C.Green);
+      Put (";");
+      Put (C.Blue);
+      Put ("m  " & CSI & "0m");
+      New_Line;
 
       Put_Line (" Set_Bg:");
       Put ("  ");
@@ -231,13 +243,20 @@ package body Test.Ansi is
    end Set_Color_Test;
 
    procedure Set_Color_8_Test is
+      Fg : constant Color_8 := 155;
+      Bg : constant Color_8 := 240;
    begin
       New_Line;
       Put_Line ("-- Set_Color_8_Test --");
       New_Line;
 
       Put_Line ("Control:");
-      Put_Line ("  " & CSI & "38;5;155;48;5;240mGreen on Grey!" & CSI & "0m");
+      Put ("  " & CSI & "38;5;155;");
+      Put (Fg);
+      Put (";48;5;");
+      Put (Bg);
+      Put ("mGreen on Grey!" & CSI & "0m");
+      New_Line;
 
       Put_Line ("Set_Color:");
       Put ("  ");
@@ -258,8 +277,20 @@ package body Test.Ansi is
       New_Line;
 
       Put_Line ("Control:");
-      Put_Line ("  " & CSI & "38;2;40;200;200;48;2;30;30;30mTeal on Dark Grey!"
-                     & CSI & "0m");
+      Put ("  " & CSI & "38;2;");
+      Put (Fg.Red);
+      Put (";");
+      Put (Fg.Green);
+      Put (";");
+      Put (Fg.Blue);
+      Put (";48;2;");
+      Put (Bg.Red);
+      Put (";");
+      Put (Bg.Green);
+      Put (";");
+      Put (Bg.Blue);
+      Put ("mTeal on Dark Grey!" & CSI & "0m");
+      New_Line;
 
       Put_Line ("Set_Color:");
       Put ("  ");
