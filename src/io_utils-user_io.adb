@@ -151,6 +151,10 @@ package body IO_Utils.User_IO is
       Size : Natural := 0;
       Neg  : Boolean := False;
    begin
+      if Low > High then
+         raise Constraint_Error with "Low is greater than High";
+      end if;
+
       Put ("Response: ");
       loop
          Get_Immediate (C);
@@ -159,7 +163,7 @@ package body IO_Utils.User_IO is
 
          case C is
             -- Backspace --
-            when Character'Val (8) =>
+            when Character'Val (127) =>
                if Size > 0
                then
                   Val := Val / 10;
@@ -175,7 +179,9 @@ package body IO_Utils.User_IO is
 
             -- Set Negative --
             when '-' =>
-               if Low < 0 and then Size = 0
+               if Low < 0 and then
+                  not Neg and then
+                  Size = 0
                then
                   Neg := True;
                   Put (C);
@@ -193,6 +199,8 @@ package body IO_Utils.User_IO is
                   if Tmp >= Low and then Tmp <= High
                   then
                      Put (C);
+                     Size := Size + 1;
+                     Val := Tmp;
                   end if;
                end;
 
