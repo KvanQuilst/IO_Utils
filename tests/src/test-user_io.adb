@@ -14,6 +14,7 @@ package body Test.User_IO is
 
       Get_Integer_Test_1;
       Get_Integer_Test_2;
+      Get_Integer_Test_3;
 
    end User_IO_Tests;
 
@@ -48,5 +49,20 @@ package body Test.User_IO is
 
       New_Line;
    end Get_Integer_Test_2;
+
+   procedure Get_Integer_Test_3 is
+      Val : Integer range 9 .. 19;
+   begin
+      New_Line;
+      Put_Line ("-- Get_Integer_Test_3 --");
+      New_Line;
+
+      Put_Line ("Enter the number '1' and then: " & TEST_VAL_3'Image);
+      Val := Get_Integer (TEST_VAL_3, TEST_VAL_3);
+
+      Assert (Val = TEST_VAL_3, "Val /= Target");
+
+      New_Line;
+   end Get_Integer_Test_3;
 
 end Test.User_IO;

@@ -159,6 +159,8 @@ package body IO_Utils.User_IO is
       loop
          Get_Immediate (C);
          exit when Size > 0 and then
+                   Val >= Low and then
+                   Val <= High and then
                    Character'Pos (C) = 10;
 
          case C is
@@ -196,7 +198,8 @@ package body IO_Utils.User_IO is
                                                 then Val * 10 - Dig
                                                 else Val * 10 + Dig);
                begin
-                  if Tmp >= Low and then Tmp <= High
+                  if (Neg and then Tmp >= Low)
+                     or else Tmp <= High
                   then
                      Put (C);
                      Size := Size + 1;
