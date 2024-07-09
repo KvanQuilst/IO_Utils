@@ -16,5 +16,5 @@ windows = false
 '...'   = false
 
 [origin]
-commit = "0d8f237ffd3cac485e629a3bf007bd1ad01edfc4"
+commit = "99ea0ad21dcd25bda7ac8eaa74394a0fb9c0e055"
 url = "git+https://github.com/KvanQuilst/IO_Utils.git"
