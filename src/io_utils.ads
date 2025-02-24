@@ -2,7 +2,7 @@
 --                                                                           --
 --                                IO_Utils                                   --
 --                                                                           --
---                      Copyright (C) 2024 Dylan Eskew                       --
+--                      Copyright (C) 2025 Dylan Eskew                       --
 --                                                                           --
 -- IO_Utils is free software: you can redistribute it and/or modify it       --
 -- under the terms of the GNU General Public License as published by the     --

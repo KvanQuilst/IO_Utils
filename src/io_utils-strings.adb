@@ -4,7 +4,7 @@
 --                                                                           --
 --                        IO_Utils . Strings (Body)                          --
 --                                                                           --
---                      Copyright (C) 2024 Dylan Eskew                       --
+--                      Copyright (C) 2025 Dylan Eskew                       --
 --                                                                           --
 -- This file contains functions for adding ANSI escape sequences to strings. --
 --                                                                           --
